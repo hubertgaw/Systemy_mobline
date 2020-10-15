@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,11 +46,24 @@ public class MainActivity extends AppCompatActivity {
                 textSecondLine = (TextView) findViewById(R.id.secondText);
                 textThirdLine = (TextView) findViewById(R.id.thirdText);
 
-                double aNum = Integer.parseInt(a.getText().toString());
-                double bNum = Integer.parseInt(b.getText().toString());
-                double cNum = Integer.parseInt(c.getText().toString());
+                double aNum, bNum, cNum;
+                if (TextUtils.isEmpty(a.getText().toString())) {
+                    aNum = 0.0;
+                } else {
+                    aNum = Integer.parseInt(a.getText().toString());
+                }
+                if (TextUtils.isEmpty(b.getText().toString())) {
+                    bNum = 0.0;
+                } else {
+                    bNum = Integer.parseInt(b.getText().toString());
+                }
+                if (TextUtils.isEmpty(c.getText().toString())) {
+                    cNum = 0.0;
+                } else {
+                    cNum = Integer.parseInt(c.getText().toString());
+                }
 
-                if (aNum != 0) {
+                if (aNum != 0.0) {
                     double delta = bNum * bNum - 4.0 * aNum * cNum;
 
                     if (delta > 0) {
@@ -72,8 +86,15 @@ public class MainActivity extends AppCompatActivity {
                         textThirdLine.setText("The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
                     }
 
-                }
-                if (aNum == 0) {
+                } else if (aNum == 0 && bNum == 0 && cNum == 0) {
+                    textFirstLine.setText("It is identity equation");
+                    textSecondLine.setText("");
+                    textThirdLine.setText("");
+                } else if (aNum == 0 && bNum == 0) {
+                    textFirstLine.setText("It is contradictory equation");
+                    textSecondLine.setText("");
+                    textThirdLine.setText("");
+                } else if (aNum == 0) {
                     double x = -cNum / bNum;
                     textFirstLine.setText("It's linear equation and its root is" + DECIMAL_FORMATTER.format(x));
                     textSecondLine.setText("");
