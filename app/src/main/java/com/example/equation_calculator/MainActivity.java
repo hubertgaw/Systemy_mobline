@@ -49,16 +49,18 @@ public class MainActivity extends AppCompatActivity {
                 double bNum = Integer.parseInt(b.getText().toString());
                 double cNum = Integer.parseInt(c.getText().toString());
 
-                double delta = bNum*bNum - 4.0*aNum*cNum;
+                if (aNum != 0) {
+                    double delta = bNum * bNum - 4.0 * aNum * cNum;
 
-                double deltaSqrt = Math.sqrt(delta);
+                    double deltaSqrt = Math.sqrt(delta);
 
-                double x1 = (-bNum - deltaSqrt) / (2.0*aNum);
-                double x2 = (-bNum + deltaSqrt) / (2.0*aNum);
+                    double x1 = (-bNum - deltaSqrt) / (2.0 * aNum);
+                    double x2 = (-bNum + deltaSqrt) / (2.0 * aNum);
 
-                result1.setText(DECIMAL_FORMATTER.format(x1));
-                result2.setText(DECIMAL_FORMATTER.format(x2));
-                deltaText.setText(DECIMAL_FORMATTER.format(delta));
+                    result1.setText(DECIMAL_FORMATTER.format(x1));
+                    result2.setText(DECIMAL_FORMATTER.format(x2));
+                    deltaText.setText(DECIMAL_FORMATTER.format(delta));
+                }
             }
         });
 
