@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView x, result1, result2, deltaText;
+    private TextView x, result1, result2, deltaText, textFirstLine, textSecondLine, textThirdLine;
     private EditText a, b, c;
     private Button computeButton;
     public static DecimalFormat DECIMAL_FORMATTER;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
         symbols.setDecimalSeparator('.');
-        DECIMAL_FORMATTER = new DecimalFormat("#.000", symbols);
+        DECIMAL_FORMATTER = new DecimalFormat("#0.000", symbols);
 
         computeButton = (Button) findViewById(R.id.computeButton);
 
@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
                 result2 = (TextView) findViewById(R.id.result2);
                 deltaText = (TextView) findViewById(R.id.deltaTextView);
 
+                textFirstLine = (TextView) findViewById(R.id.firstText);
+                textSecondLine = (TextView) findViewById(R.id.secondText);
+                textThirdLine = (TextView) findViewById(R.id.thirdText);
+
                 double aNum = Integer.parseInt(a.getText().toString());
                 double bNum = Integer.parseInt(b.getText().toString());
                 double cNum = Integer.parseInt(c.getText().toString());
@@ -54,12 +58,21 @@ public class MainActivity extends AppCompatActivity {
 
                     double deltaSqrt = Math.sqrt(delta);
 
-                    double x1 = (-bNum - deltaSqrt) / (2.0 * aNum);
-                    double x2 = (-bNum + deltaSqrt) / (2.0 * aNum);
+                    double x1 = ((-bNum) - deltaSqrt) / (2.0 * aNum);
+                    double x2 = ((-bNum) + deltaSqrt) / (2.0 * aNum);
 
-                    result1.setText(DECIMAL_FORMATTER.format(x1));
-                    result2.setText(DECIMAL_FORMATTER.format(x2));
-                    deltaText.setText(DECIMAL_FORMATTER.format(delta));
+                    textFirstLine.setText("The quadratic equation has two roots, the first root is" + DECIMAL_FORMATTER.format(x1));
+                    textSecondLine.setText("The second root is" + DECIMAL_FORMATTER.format(x2));
+                    textThirdLine.setText( "The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
+                  //  result1.setText(DECIMAL_FORMATTER.format(x1));
+                  //  result2.setText(DECIMAL_FORMATTER.format(x2));
+                  //  deltaText.setText(DECIMAL_FORMATTER.format(delta));
+                }
+                if (aNum == 0) {
+                    double x = -cNum / bNum;
+                    textFirstLine.setText("It's linear equation and its root is" + DECIMAL_FORMATTER.format(x));
+                    textSecondLine.setText("");
+                    textThirdLine.setText("");
                 }
             }
         });
