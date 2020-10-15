@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView x, textFirstLine, textSecondLine, textThirdLine;
+    private TextView x, textFirstLine, textSecondLine, textThirdLine, functionTextView;
     private EditText a, b, c;
     private Button computeButton;
     public static DecimalFormat DECIMAL_FORMATTER;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 textFirstLine = (TextView) findViewById(R.id.firstText);
                 textSecondLine = (TextView) findViewById(R.id.secondText);
                 textThirdLine = (TextView) findViewById(R.id.thirdText);
+                functionTextView = (TextView) findViewById(R.id.functionTextView);
 
                 double aNum, bNum, cNum;
                 if (TextUtils.isEmpty(a.getText().toString())) {
@@ -85,21 +86,34 @@ public class MainActivity extends AppCompatActivity {
                         textSecondLine.setText("");
                         textThirdLine.setText("The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
                     }
+                    if (aNum > 0) {
+                        functionTextView.setText("The graph of a function is directed to the up");
+                    } else {
+                        functionTextView.setText("The graph of a function is directed to the down");
+                    }
 
                 } else if (aNum == 0 && bNum == 0 && cNum == 0) {
-                    textFirstLine.setText("It is identity equation");
+                    textFirstLine.setText("It is identity equation, ");
                     textSecondLine.setText("");
                     textThirdLine.setText("");
+                    functionTextView.setText("It is not a function");
                 } else if (aNum == 0 && bNum == 0) {
                     textFirstLine.setText("It is contradictory equation");
                     textSecondLine.setText("");
                     textThirdLine.setText("");
+                    functionTextView.setText("It is not a function");
                 } else if (aNum == 0) {
                     double x = -cNum / bNum;
                     textFirstLine.setText("It's linear equation and its root is" + DECIMAL_FORMATTER.format(x));
                     textSecondLine.setText("");
                     textThirdLine.setText("");
+                    if(bNum > 0) {
+                        functionTextView.setText("The graph of a function is directed to the up");
+                    } else if (bNum < 0) {
+                        functionTextView.setText("The graph of a function is directed to the down");
+                    }
                 }
+
             }
         });
 
