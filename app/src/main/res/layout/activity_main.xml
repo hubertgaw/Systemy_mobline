@@ -142,16 +142,6 @@
         app:layout_constraintTop_toBottomOf="@+id/computeButton" />
 
     <TextView
-        android:id="@+id/result1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
         android:id="@+id/secondText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -161,22 +151,6 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/firstText" />
-
-    <TextView
-        android:id="@+id/result2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        app:layout_constraintStart_toEndOf="@+id/secondText"
-        app:layout_constraintTop_toBottomOf="@+id/firstText" />
-
-    <TextView
-        android:id="@+id/deltaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        app:layout_constraintStart_toEndOf="@+id/thirdText"
-        app:layout_constraintTop_toBottomOf="@+id/result2" />
 
     <TextView
         android:id="@+id/thirdText"

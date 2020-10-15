@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView x, result1, result2, deltaText, textFirstLine, textSecondLine, textThirdLine;
+    private TextView x, textFirstLine, textSecondLine, textThirdLine;
     private EditText a, b, c;
     private Button computeButton;
     public static DecimalFormat DECIMAL_FORMATTER;
@@ -41,10 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 b = (EditText) findViewById(R.id.bFactor);
                 c = (EditText) findViewById(R.id.cFactor);
 
-                result1 = (TextView) findViewById(R.id.result1);
-                result2 = (TextView) findViewById(R.id.result2);
-                deltaText = (TextView) findViewById(R.id.deltaTextView);
-
                 textFirstLine = (TextView) findViewById(R.id.firstText);
                 textSecondLine = (TextView) findViewById(R.id.secondText);
                 textThirdLine = (TextView) findViewById(R.id.thirdText);
@@ -56,17 +52,26 @@ public class MainActivity extends AppCompatActivity {
                 if (aNum != 0) {
                     double delta = bNum * bNum - 4.0 * aNum * cNum;
 
-                    double deltaSqrt = Math.sqrt(delta);
+                    if (delta > 0) {
+                        double deltaSqrt = Math.sqrt(delta);
 
-                    double x1 = ((-bNum) - deltaSqrt) / (2.0 * aNum);
-                    double x2 = ((-bNum) + deltaSqrt) / (2.0 * aNum);
+                        double x1 = ((-bNum) - deltaSqrt) / (2.0 * aNum);
+                        double x2 = ((-bNum) + deltaSqrt) / (2.0 * aNum);
 
-                    textFirstLine.setText("The quadratic equation has two roots, the first root is" + DECIMAL_FORMATTER.format(x1));
-                    textSecondLine.setText("The second root is" + DECIMAL_FORMATTER.format(x2));
-                    textThirdLine.setText( "The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
-                  //  result1.setText(DECIMAL_FORMATTER.format(x1));
-                  //  result2.setText(DECIMAL_FORMATTER.format(x2));
-                  //  deltaText.setText(DECIMAL_FORMATTER.format(delta));
+                        textFirstLine.setText("The quadratic equation has two roots, the first root is" + DECIMAL_FORMATTER.format(x1));
+                        textSecondLine.setText("The second root is" + DECIMAL_FORMATTER.format(x2));
+                        textThirdLine.setText("The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
+                    } else if (delta < 0) {
+                        textFirstLine.setText("The quadratic equation has no root");
+                        textSecondLine.setText("");
+                        textThirdLine.setText("The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
+                    } else {
+                        double x = -bNum / (2.0 * aNum);
+                        textFirstLine.setText("The quadratic equation has one root and it is" + DECIMAL_FORMATTER.format(x));
+                        textSecondLine.setText("");
+                        textThirdLine.setText("The square discriminate equals " + DECIMAL_FORMATTER.format(delta));
+                    }
+
                 }
                 if (aNum == 0) {
                     double x = -cNum / bNum;
