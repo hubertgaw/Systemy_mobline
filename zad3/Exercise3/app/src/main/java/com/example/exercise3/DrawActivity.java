@@ -16,5 +16,8 @@ public class DrawActivity extends AppCompatActivity {
         //requestWindowFeature(FEATURE_NO_TITLE);
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
 
+        DrawView drawView = new DrawView(this);
+        setContentView(drawView);
+        drawView.requestFocus();
     }
 }
