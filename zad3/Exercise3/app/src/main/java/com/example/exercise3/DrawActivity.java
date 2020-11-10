@@ -21,9 +21,10 @@ public class DrawActivity extends AppCompatActivity {
         //getSupportActionBar().hide();
         //requestWindowFeature(FEATURE_NO_TITLE);
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
-        drawView = new DrawView(this);
-        setContentView(drawView);
-        drawView.requestFocus();
+        setContentView(R.layout.activity_draw);
+        drawView = (DrawView) findViewById(R.id.drawView);
+
+        //drawView.requestFocus();
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         drawView.init(metrics);
