@@ -89,4 +89,8 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void onClickClearButton(View view) {
+        drawView.clear();
+    }
 }
