@@ -7,18 +7,23 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import static android.view.Window.FEATURE_NO_TITLE;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 
-public class DrawActivity extends AppCompatActivity {
+public class DrawActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private DrawView drawView;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
         //requestWindowFeature(FEATURE_NO_TITLE);
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
         setContentView(R.layout.activity_draw);
@@ -28,32 +33,60 @@ public class DrawActivity extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         drawView.init(metrics);
+
+        spinner = (Spinner) findViewById(R.id.spinner_type);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.menu_main, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch(item.getItemId()) {
+//            case R.id.normal:
+//                drawView.normal();
+//                return true;
+//            case R.id.emboss:
+//                drawView.emboss();
+//                return true;
+//            case R.id.blur:
+//                drawView.blur();
+//                return true;
+//            case R.id.clear:
+//                drawView.clear();
+//                return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.normal:
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch ((int) parent.getItemIdAtPosition(position)) {
+            case 0:
                 drawView.normal();
-                return true;
-            case R.id.emboss:
+                break;
+            case 1:
                 drawView.emboss();
-                return true;
-            case R.id.blur:
+                break;
+            case 2:
                 drawView.blur();
-                return true;
-            case R.id.clear:
-                drawView.clear();
-                return true;
-        }
+                break;
 
-        return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
