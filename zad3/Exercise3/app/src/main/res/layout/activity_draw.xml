@@ -39,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
+        android:onClick="onClickRedButton"
         app:backgroundTint="#FF0000" />
 
     <Button
@@ -47,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
         android:layout_marginLeft="250dp"
+        android:onClick="onClickBlueButton"
         app:backgroundTint="#0000FF" />
 
     <Button
@@ -55,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="205dp"
         android:layout_marginLeft="205dp"
+        android:onClick="onClickGreenButton"
         app:backgroundTint="#00FF00" />
 
 </RelativeLayout>

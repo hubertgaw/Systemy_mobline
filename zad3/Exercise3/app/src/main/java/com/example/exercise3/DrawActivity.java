@@ -93,4 +93,17 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onClickClearButton(View view) {
         drawView.clear();
     }
+
+    public void onClickRedButton(View view) {
+        drawView.changeColorToRed();
+    }
+
+
+    public void onClickBlueButton(View view) {
+        drawView.changeColorToBlue();
+    }
+
+    public void onClickGreenButton(View view) {
+        drawView.changeColorToGreen();
+    }
 }

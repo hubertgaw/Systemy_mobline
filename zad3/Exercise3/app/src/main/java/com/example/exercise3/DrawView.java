@@ -173,6 +173,18 @@ public class DrawView extends View {//implements View.OnTouchListener {
         return true;
     }
 
+    public void changeColorToRed() {
+        currentColor = Color.RED;
+    }
+
+    public void changeColorToBlue() {
+        currentColor = Color.BLUE;
+    }
+
+    public void changeColorToGreen() {
+        currentColor = Color.GREEN;
+    }
+
 //    @Override
 //    protected void onDraw(Canvas canvas) {
 //        for (Point point:points){
