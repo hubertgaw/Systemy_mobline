@@ -60,4 +60,13 @@
         android:onClick="onClickGreenButton"
         app:backgroundTint="#00FF00" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="91dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginLeft="280dp"
+        android:onClick="onClickRubber"
+        app:srcCompat="@drawable/rubber_zad3" />
+
 </RelativeLayout>

@@ -185,6 +185,10 @@ public class DrawView extends View {//implements View.OnTouchListener {
         currentColor = Color.GREEN;
     }
 
+    public void changeColorToBackground() {
+        currentColor = DEFAULT_BG_COLOR;
+    }
+
 //    @Override
 //    protected void onDraw(Canvas canvas) {
 //        for (Point point:points){

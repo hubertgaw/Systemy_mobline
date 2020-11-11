@@ -106,4 +106,8 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onClickGreenButton(View view) {
         drawView.changeColorToGreen();
     }
+
+    public void onClickRubber(View view) {
+        drawView.changeColorToBackground();
+    }
 }
