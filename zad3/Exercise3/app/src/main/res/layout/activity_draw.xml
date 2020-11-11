@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_draw"
     android:layout_width="match_parent"
@@ -31,5 +32,29 @@
         android:layout_marginLeft="70dp"
         android:onClick="onClickClearButton"
         android:text="Clear" />
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        app:backgroundTint="#FF0000" />
+
+    <Button
+        android:id="@+id/buttonRed2"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="250dp"
+        android:layout_marginLeft="250dp"
+        app:backgroundTint="#0000FF" />
+
+    <Button
+        android:id="@+id/buttonRed3"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="205dp"
+        android:layout_marginLeft="205dp"
+        app:backgroundTint="#00FF00" />
 
 </RelativeLayout>
