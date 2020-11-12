@@ -20,14 +20,13 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrawView extends View {//implements View.OnTouchListener {
+public class DrawView extends View {
 
     private int BRUSH_SIZE = 10;
     public static final int DEFAULT_COLOR = Color.RED; //default color of pen
     public static final int DEFAULT_BG_COLOR = Color.WHITE; //default color for background
     private static final float TOUCH_TOLERANCE = 4; //use to get when the user starts to draw
     private Paint paint;
-    private List<Point> points = new ArrayList<>(); //point which represent coordinates of user's finger
     private Path path; //single path
     private ArrayList<FingerPath> paths = new ArrayList<>(); //our user path
     private int currentColor;
@@ -44,11 +43,6 @@ public class DrawView extends View {//implements View.OnTouchListener {
 
     public DrawView(Context context) {
         this(context, null);
-//        paint = new Paint();
-//        setFocusable(true);
-//        setFocusableInTouchMode(true);
-//        this.setOnTouchListener(this);
-//        paint.setColor(Color.RED);
     }
 
     public DrawView(Context context, @Nullable AttributeSet attrs) {
@@ -205,22 +199,4 @@ public class DrawView extends View {//implements View.OnTouchListener {
         strokeWidth = 40;
     }
 
-
-//    @Override
-//    protected void onDraw(Canvas canvas) {
-//        for (Point point:points){
-//            canvas.drawCircle(point.x, point.y, 30, paint);
-//
-//        }
-//    }
-
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-//        Point point = new Point();
-//        point.x = (int) event.getX();
-//        point.y = (int) event.getY();
-//        points.add(point);
-//        invalidate();
-//        return true;
-//    }
 }

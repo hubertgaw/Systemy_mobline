@@ -19,7 +19,6 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private DrawView drawView;
     private Spinner spinner;
-    private Spinner spinnerThickness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,48 +27,10 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         //requestWindowFeature(FEATURE_NO_TITLE);
         getWindow().setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
         setContentView(R.layout.activity_draw);
-        drawView = (DrawView) findViewById(R.id.drawView);
-
-        //drawView.requestFocus();
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        drawView.init(metrics);
-
-        spinner = (Spinner) findViewById(R.id.spinner_type);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.type_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
+        initMetrics();
+        initSpinner();
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater menuInflater = getMenuInflater();
-//        menuInflater.inflate(R.menu.menu_main, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch(item.getItemId()) {
-//            case R.id.normal:
-//                drawView.normal();
-//                return true;
-//            case R.id.emboss:
-//                drawView.emboss();
-//                return true;
-//            case R.id.blur:
-//                drawView.blur();
-//                return true;
-//            case R.id.clear:
-//                drawView.clear();
-//                return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -93,6 +54,24 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    private void initMetrics() {
+        drawView = (DrawView) findViewById(R.id.drawView);
+        //drawView.requestFocus();
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        drawView.init(metrics);
+    }
+
+    private void initSpinner() {
+        spinner = (Spinner) findViewById(R.id.spinner_type);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+
+
     public void onClickClearButton(View view) {
         drawView.clear();
     }
@@ -111,6 +90,7 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onClickRubber(View view) {
+        drawView.normal();
         drawView.changeColorToBackground();
     }
 
