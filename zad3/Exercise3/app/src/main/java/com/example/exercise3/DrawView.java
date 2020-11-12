@@ -22,7 +22,7 @@ import java.util.List;
 
 public class DrawView extends View {//implements View.OnTouchListener {
 
-    public static int BRUSH_SIZE = 10;
+    private int BRUSH_SIZE = 10;
     public static final int DEFAULT_COLOR = Color.RED; //default color of pen
     public static final int DEFAULT_BG_COLOR = Color.WHITE; //default color for background
     private static final float TOUCH_TOLERANCE = 4; //use to get when the user starts to draw
@@ -188,6 +188,23 @@ public class DrawView extends View {//implements View.OnTouchListener {
     public void changeColorToBackground() {
         currentColor = DEFAULT_BG_COLOR;
     }
+
+    public void thin() {
+        strokeWidth = 10;
+    }
+
+    public void mediumThickness() {
+        strokeWidth = 20;
+    }
+
+    public void thick() {
+        strokeWidth = 30;
+    }
+
+    public void ultraThick() {
+        strokeWidth = 40;
+    }
+
 
 //    @Override
 //    protected void onDraw(Canvas canvas) {

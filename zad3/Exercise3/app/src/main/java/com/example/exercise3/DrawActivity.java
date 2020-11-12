@@ -19,6 +19,7 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private DrawView drawView;
     private Spinner spinner;
+    private Spinner spinnerThickness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
     }
 
 //    @Override
@@ -71,19 +73,20 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch ((int) parent.getItemIdAtPosition(position)) {
-            case 0:
-                drawView.normal();
-                break;
-            case 1:
-                drawView.emboss();
-                break;
-            case 2:
-                drawView.blur();
-                break;
+                switch ((int) parent.getItemIdAtPosition(position)) {
+                    case 0:
+                        drawView.normal();
+                        break;
+                    case 1:
+                        drawView.emboss();
+                        break;
+                    case 2:
+                        drawView.blur();
+                        break;
+                }
 
         }
-    }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
@@ -109,5 +112,21 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public void onClickRubber(View view) {
         drawView.changeColorToBackground();
+    }
+
+    public void onClickMedium(View view) {
+        drawView.mediumThickness();
+    }
+
+    public void onClickThin(View view) {
+        drawView.thin();
+    }
+
+    public void onClickThick(View view) {
+        drawView.thick();
+    }
+
+    public void onClickUltraThick(View view) {
+        drawView.ultraThick();
     }
 }
