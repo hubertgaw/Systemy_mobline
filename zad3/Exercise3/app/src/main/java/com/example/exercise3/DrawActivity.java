@@ -44,6 +44,9 @@ public class DrawActivity extends AppCompatActivity implements AdapterView.OnIte
                     case 2:
                         drawView.blur();
                         break;
+                    case 3:
+                        drawView.blur2();
+                        break;
                 }
 
         }

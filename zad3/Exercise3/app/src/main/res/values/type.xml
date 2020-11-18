@@ -4,5 +4,6 @@
         <item>Normal</item>
         <item>Emboss</item>
         <item>Blur</item>
+        <item>Blur2</item>
     </string-array>
 </resources>

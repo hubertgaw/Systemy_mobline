@@ -18,6 +18,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DrawView extends View {
@@ -36,10 +38,24 @@ public class DrawView extends View {
     private boolean blur;
     private MaskFilter mEmboss;
     private MaskFilter mBlur;
+    private MaskFilter mBlur2;
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint bitmapPaint = new Paint(Paint.DITHER_FLAG);
     private float mX, mY;
+//    public enum type {
+//        normal (true),
+//        emboss (false),
+//        blur   (false),
+//        blur2  (false);
+//
+//        boolean type;
+//
+//        type(boolean b) {
+//            type = b;
+//        }
+//    }
+    private List<Boolean> flagsList = new ArrayList<Boolean>(Arrays.asList(new Boolean[4]));
 
     public DrawView(Context context) {
         this(context, null);
@@ -59,7 +75,9 @@ public class DrawView extends View {
         paint.setAlpha(0xff);
 
         mEmboss = new EmbossMaskFilter(new float[] {1, 1, 1}, 0.5f, 0.6f, 2f);
-        mBlur = new BlurMaskFilter(5, BlurMaskFilter.Blur.OUTER);
+        mBlur = new BlurMaskFilter(5, BlurMaskFilter.Blur.NORMAL);
+        mBlur2 = new BlurMaskFilter(5, BlurMaskFilter.Blur.OUTER);
+
     }
 
     public void init(DisplayMetrics metrics) {
@@ -76,16 +94,28 @@ public class DrawView extends View {
     public void normal() {
         emboss = false;
         blur = false;
+       // paint.setMaskFilter(null);
+        Collections.fill(flagsList, Boolean.FALSE);
+        flagsList.set(0, Boolean.TRUE);
+
     }
 
     public void emboss() {
         emboss = true;
         blur = false;
+        //paint.setMaskFilter(mEmboss);
+        Collections.fill(flagsList, Boolean.f);
+        flagsList.set(1,Boolean.TRUE);
     }
 
     public void blur() {
         emboss = false;
         blur = true;
+        //paint.setMaskFilter(mBlur);
+
+    }
+
+    public void blur2() {
     }
 
     public void clear() {
@@ -198,5 +228,6 @@ public class DrawView extends View {
     public void ultraThick() {
         strokeWidth = 40;
     }
+
 
 }
