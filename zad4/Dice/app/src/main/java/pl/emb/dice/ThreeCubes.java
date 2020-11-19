@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class ThreeCubes extends AppCompatActivity {
 
     private Accelerometer accelerometer;
     private TextView mNumber1, mNumber2, mNumber3;
-    Randomizer randomizer;
+    Tools tools;
 
 
     @Override
@@ -23,18 +21,18 @@ public class ThreeCubes extends AppCompatActivity {
         mNumber2 = (TextView)findViewById(R.id.threeNumbers2);
         mNumber3 = (TextView)findViewById(R.id.threeNumbers3);
         accelerometer = new Accelerometer(this);
-        randomizer = new Randomizer();
+        tools = new Tools();
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
-                    int randomNum1 = randomizer.generateRandomNumber();
+                    int randomNum1 = tools.generateRandomNumber();
                     mNumber1.setText(Integer.toString(randomNum1));
 
-                    int randomNum2 = randomizer.generateRandomNumber();
+                    int randomNum2 = tools.generateRandomNumber();
                     mNumber2.setText(Integer.toString(randomNum2));
 
-                    int randomNum3 = randomizer.generateRandomNumber();
+                    int randomNum3 = tools.generateRandomNumber();
                     mNumber3.setText(Integer.toString(randomNum3));
                 }
             }
