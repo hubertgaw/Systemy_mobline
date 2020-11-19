@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class ThreeCubes extends AppCompatActivity {
 
     private Accelerometer accelerometer;
-    private TextView mNumber1, mNumber2, mNumber3;
+    //private TextView mNumber1, mNumber2, mNumber3;
     private ImageView cube1, cube2, cube3;
     Tools tools;
 
@@ -20,9 +20,9 @@ public class ThreeCubes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_three_cubes);
 
-        mNumber1 = (TextView)findViewById(R.id.threeNumbers1);
-        mNumber2 = (TextView)findViewById(R.id.threeNumbers2);
-        mNumber3 = (TextView)findViewById(R.id.threeNumbers3);
+//        mNumber1 = (TextView)findViewById(R.id.threeNumbers1);
+//        mNumber2 = (TextView)findViewById(R.id.threeNumbers2);
+//        mNumber3 = (TextView)findViewById(R.id.threeNumbers3);
 
         cube1 = (ImageView)findViewById(R.id.threeCubesImage1);
         cube2 = (ImageView)findViewById(R.id.threeCubesImage2);
@@ -35,15 +35,15 @@ public class ThreeCubes extends AppCompatActivity {
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
                     int randomNum1 = tools.generateRandomNumber();
-                    mNumber1.setText(Integer.toString(randomNum1));
+//                    mNumber1.setText(Integer.toString(randomNum1));
                     tools.setImage(cube1,randomNum1);
 
                     int randomNum2 = tools.generateRandomNumber();
-                    mNumber2.setText(Integer.toString(randomNum2));
+//                    mNumber2.setText(Integer.toString(randomNum2));
                     tools.setImage(cube2,randomNum2);
 
                     int randomNum3 = tools.generateRandomNumber();
-                    mNumber3.setText(Integer.toString(randomNum3));
+//                    mNumber3.setText(Integer.toString(randomNum3));
                     tools.setImage(cube3,randomNum3);
                 }
             }

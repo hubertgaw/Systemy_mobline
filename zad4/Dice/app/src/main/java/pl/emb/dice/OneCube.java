@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class OneCube extends AppCompatActivity {
 
     private Accelerometer accelerometer;
-    private TextView mNumber;
+//    private TextView mNumber;
     private ImageView cube;
     Tools tools;
 
@@ -18,7 +18,7 @@ public class OneCube extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_cube);
 
-        mNumber = (TextView)findViewById(R.id.number);
+//        mNumber = (TextView)findViewById(R.id.number);
         cube = (ImageView)findViewById(R.id.oneCubeImage);
         accelerometer = new Accelerometer(this);
         tools = new Tools();
@@ -27,7 +27,7 @@ public class OneCube extends AppCompatActivity {
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
                     int randomNum = tools.generateRandomNumber();
-                    mNumber.setText(Integer.toString(randomNum));
+//                    mNumber.setText(Integer.toString(randomNum));
                     tools.setImage(cube, randomNum);
                 }
             }
