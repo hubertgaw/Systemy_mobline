@@ -13,7 +13,8 @@ public class OneCube extends AppCompatActivity {
 
     private Accelerometer accelerometer;
     private TextView mNumber;
-    private List<TextView> numbers = new ArrayList<>();
+    //private List<TextView> numbers = new ArrayList<>();
+    Randomizer randomizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,14 @@ public class OneCube extends AppCompatActivity {
 
         mNumber = (TextView)findViewById(R.id.number);
         accelerometer = new Accelerometer(this);
+        randomizer = new Randomizer();
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
-                    Random randomGenerator = new Random();
-                    int randomNum = randomGenerator.nextInt(6) + 1;
+//                    Random randomGenerator = new Random();
+//                    int randomNum = randomGenerator.nextInt(6) + 1;
+                    int randomNum = randomizer.generateRandomNumber();
                     mNumber.setText(Integer.toString(randomNum));
                 }
             }
