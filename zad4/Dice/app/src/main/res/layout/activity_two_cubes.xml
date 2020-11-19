@@ -27,4 +27,24 @@
         android:textSize="200sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/twoCubesImage1"
+        android:layout_width="182dp"
+        android:layout_height="324dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dice1" />
+
+    <ImageView
+        android:id="@+id/twoCubesImage2"
+        android:layout_width="182dp"
+        android:layout_height="324dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dice1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
