@@ -28,8 +28,6 @@ public class ThreeCubes extends AppCompatActivity {
             @Override
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
-//                    Random randomGenerator = new Random();
-//                    int randomNum = randomGenerator.nextInt(6) + 1;
                     int randomNum1 = randomizer.generateRandomNumber();
                     mNumber1.setText(Integer.toString(randomNum1));
 

@@ -64,15 +64,6 @@ public class Accelerometer implements SensorEventListener {
 
     }
 
-    private void generateRandomNumber(List<TextView> numbers) {
-        Random randomGenerator = new Random();
-        randomNum = randomGenerator.nextInt(6) + 1;
-        //mNumber.setText(Integer.toString(randomNum));
-        for (int i = 0; i < numbers.size(); i++) {
-            numbers.get(i).setText(Integer.toString(randomNum));
-        }
-    }
-
 
     public void register() {
         mSensorManager.registerListener(this,

@@ -13,7 +13,6 @@ public class OneCube extends AppCompatActivity {
 
     private Accelerometer accelerometer;
     private TextView mNumber;
-    //private List<TextView> numbers = new ArrayList<>();
     Randomizer randomizer;
 
     @Override
@@ -28,8 +27,6 @@ public class OneCube extends AppCompatActivity {
             @Override
             public void onShake(float acceleration) {
                 if (acceleration > accelerometer.getShakeThreshold()) {
-//                    Random randomGenerator = new Random();
-//                    int randomNum = randomGenerator.nextInt(6) + 1;
                     int randomNum = randomizer.generateRandomNumber();
                     mNumber.setText(Integer.toString(randomNum));
                 }
