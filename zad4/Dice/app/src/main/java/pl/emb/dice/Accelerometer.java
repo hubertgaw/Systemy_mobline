@@ -25,7 +25,6 @@ public class Accelerometer implements SensorEventListener {
         return SHAKE_THRESHOLD;
     }
 
-    private int randomNum;
     private Listener listener;
 
     public Accelerometer(Context context) {
@@ -34,9 +33,6 @@ public class Accelerometer implements SensorEventListener {
 
     }
 
-    public int getRandomNum() {
-        return randomNum;
-    }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -48,9 +44,6 @@ public class Accelerometer implements SensorEventListener {
             float acceleration = (float) Math.sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH;
             listener.onShake(acceleration);
         }
-//        if(acceleration > SHAKE_THRESHOLD) {
-//            generateRandomNumber();
-//        }
     }
 
     public void setListener(Listener l)

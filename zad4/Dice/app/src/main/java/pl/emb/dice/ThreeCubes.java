@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class ThreeCubes extends AppCompatActivity {
 
     private Accelerometer accelerometer;
+    private Gyroscope gyroscope;
     //private TextView mNumber1, mNumber2, mNumber3;
     private ImageView cube1, cube2, cube3;
     Tools tools;
@@ -29,6 +30,7 @@ public class ThreeCubes extends AppCompatActivity {
         cube3 = (ImageView)findViewById(R.id.threeCubesImage3);
 
         accelerometer = new Accelerometer(this);
+        gyroscope = new Gyroscope(this);
         tools = new Tools();
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
@@ -48,18 +50,36 @@ public class ThreeCubes extends AppCompatActivity {
                 }
             }
         });
+
+        gyroscope.setListener(new Gyroscope.Listener() {
+            @Override
+            public void onRotate(float x, float y, float z) {
+                if (x > gyroscope.getRotationThreshold() || y > gyroscope.getRotationThreshold() || z > gyroscope.getRotationThreshold()) {
+                    int randomNum1 = tools.generateRandomNumber();
+                    tools.setImage(cube1, randomNum1);
+
+                    int randomNum2 = tools.generateRandomNumber();
+                    tools.setImage(cube2, randomNum2);
+
+                    int randomNum3 = tools.generateRandomNumber();
+                    tools.setImage(cube3, randomNum3);
+                }
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         accelerometer.register();
+        gyroscope.register();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         accelerometer.unregister();
+        gyroscope.unregister();
     }
 
     @Override

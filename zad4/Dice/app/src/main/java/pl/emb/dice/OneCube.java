@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class OneCube extends AppCompatActivity {
 
     private Accelerometer accelerometer;
+    private Gyroscope gyroscope;
 //    private TextView mNumber;
     private ImageView cube;
     Tools tools;
@@ -21,6 +22,7 @@ public class OneCube extends AppCompatActivity {
 //        mNumber = (TextView)findViewById(R.id.number);
         cube = (ImageView)findViewById(R.id.oneCubeImage);
         accelerometer = new Accelerometer(this);
+        gyroscope = new Gyroscope(this);
         tools = new Tools();
         accelerometer.setListener(new Accelerometer.Listener() {
             @Override
@@ -32,18 +34,30 @@ public class OneCube extends AppCompatActivity {
                 }
             }
         });
+
+        gyroscope.setListener(new Gyroscope.Listener() {
+            @Override
+            public void onRotate(float x, float y, float z) {
+                if (x > gyroscope.getRotationThreshold() || y > gyroscope.getRotationThreshold() || z > gyroscope.getRotationThreshold()) {
+                    int randomNum = tools.generateRandomNumber();
+                    tools.setImage(cube, randomNum);
+                }
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         accelerometer.register();
+        gyroscope.register();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         accelerometer.unregister();
+        gyroscope.unregister();
     }
 
     @Override
