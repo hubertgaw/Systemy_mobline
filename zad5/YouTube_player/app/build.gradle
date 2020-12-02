@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "pl.emb.youtubeplayer"
-        minSdkVersion 28
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -33,8 +33,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation files('C:\\Users\\Hubert\\Documents\\studia\\sem5\\mobilne\\zadanka\\zad5\\YouTube_player\\app\\libs\\YouTubeAndroidPlayerApi.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+//    compile files('libs/YouTubeAndroidPlayerApi.jar')
 }
