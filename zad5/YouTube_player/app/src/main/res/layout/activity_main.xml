@@ -11,9 +11,9 @@
         android:id="@+id/playVideoBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/play_video"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerInParent="true"
+        android:onClick="onClickPlayVideo"
+        android:text="@string/play_video" />
 
     <view
         android:id="@+id/youtube_view"
@@ -21,4 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/playVideoBtn"/>
+
+    <Spinner
+        android:id="@+id/movieSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playVideoBtn" />
+
 </RelativeLayout>
