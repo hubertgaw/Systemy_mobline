@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/playVideoBtn"
         android:layout_centerHorizontal="true"
+        android:onClick="onClickPauseBtn"
         android:text="@string/pause" />
 
     <Button
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pauseBtn"
         android:layout_centerHorizontal="true"
+        android:onClick="onClickStopBtn"
         android:text="@string/stop" />
     <!--        android:layout_below="@id/youtube_view" />-->
 
