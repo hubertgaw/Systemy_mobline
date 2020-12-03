@@ -20,7 +20,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
-public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends YouTubeBaseActivity
+        implements AdapterView.OnItemSelectedListener {
 
     YouTubePlayerView youTubePlayerView;
     private YouTubePlayer mYouTubePlayer;
@@ -91,16 +92,17 @@ public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnI
                     mYouTubePlayer.cueVideo(getMovieURL());
                     System.out.println("Git");
                 } catch (Throwable T) {
-                    Toast.makeText(getApplicationContext(), "Error during Video initialization",
+                    Toast.makeText(getApplicationContext(),"Error during Video initialization",
                             Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                YouTubeInitializationResult youTubeInitializationResult) {
+                                                YouTubeInitializationResult
+                                                        youTubeInitializationResult) {
                 Toast.makeText(getApplicationContext(),
-                        "An error occured during initialization: " + youTubeInitializationResult.toString(),
-                        Toast.LENGTH_LONG).show();
+                        "An error occured during initialization: " +
+                                youTubeInitializationResult.toString(), Toast.LENGTH_LONG).show();
                 System.out.println("Failure");
 
             }

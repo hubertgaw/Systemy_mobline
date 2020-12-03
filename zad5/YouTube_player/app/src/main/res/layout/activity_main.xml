@@ -11,21 +11,38 @@
         android:id="@+id/playVideoBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:onClick="onClickPlayVideo"
-        android:text="@string/play_video" />
+        android:text="@string/play_video"
+        android:layout_below="@id/movieSpinner"/>
 
     <view
         android:id="@+id/youtube_view"
         class="com.google.android.youtube.player.YouTubePlayerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/playVideoBtn"/>
+        android:layout_above="@+id/movieSpinner"/>
 
     <Spinner
         android:id="@+id/movieSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/playVideoBtn" />
+        android:layout_centerInParent="true"/>
+
+    <Button
+        android:id="@+id/pauseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playVideoBtn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/pause" />
+
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pauseBtn"
+        android:layout_centerHorizontal="true"
+        android:text="@string/stop" />
+    <!--        android:layout_below="@id/youtube_view" />-->
 
 </RelativeLayout>
