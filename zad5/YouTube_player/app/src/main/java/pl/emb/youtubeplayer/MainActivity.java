@@ -23,6 +23,7 @@ public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnI
 
     YouTubePlayerView youTubePlayerView;
     //private Config config = new Config();
+    private YouTubePlayer mYouTubePlayer;
 
     private String movieURL;
 
@@ -41,6 +42,7 @@ public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        youTubePlayerSetup();
         youTubePlayerView = findViewById(R.id.youtube_view);
         moviesMap.put("Program meczowy #66", "5IQ_X1ZmgGw");
         moviesMap.put("Program meczowy #65", "KD8zBYodbyw");
@@ -59,25 +61,26 @@ public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnI
         movieSpinner.setAdapter(adapter);
         movieSpinner.setOnItemSelectedListener(this);
         //config = new Config();
-        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
-                    @Override
-                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
-                                                        YouTubePlayer youTubePlayer, boolean b) {
-                        youTubePlayer.loadVideo(getMovieURL());
-                        System.out.println("Git");
-                    }
-                    @Override
-                    public void onInitializationFailure(YouTubePlayer.Provider provider,
-                                                        YouTubeInitializationResult youTubeInitializationResult) {
-                        System.out.println("Failure");
-
-                    }
-                };
+//        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
+//                    @Override
+//                    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+//                                                        YouTubePlayer youTubePlayer, boolean b) {
+//                        youTubePlayer.loadVideo(getMovieURL());
+//                        System.out.println("Git");
+//                    }
+//                    @Override
+//                    public void onInitializationFailure(YouTubePlayer.Provider provider,
+//                                                        YouTubeInitializationResult youTubeInitializationResult) {
+//                        System.out.println("Failure");
+//
+//                    }
+//                };
 
     }
 
     public void onClickPlayVideo(View view) {
-        youTubePlayerView.initialize(Config.getYoutubeApiKey(), onInitializedListener);
+       // youTubePlayerView.initialize(Config.getYoutubeApiKey(), onInitializedListener);
+        mYouTubePlayer.loadVideo(getMovieURL());
     }
 
     @Override
@@ -88,6 +91,27 @@ public class MainActivity extends YouTubeBaseActivity implements AdapterView.OnI
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    private void youTubePlayerSetup() {
+        youTubePlayerView = findViewById(R.id.youtube_view);
+        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                                YouTubePlayer youTubePlayer, boolean b) {
+                mYouTubePlayer = youTubePlayer;
+                mYouTubePlayer.cueVideo(getMovieURL());
+                System.out.println("Git");
+            }
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider,
+                                                YouTubeInitializationResult youTubeInitializationResult) {
+                System.out.println("Failure");
+
+            }
+        };
+        youTubePlayerView.initialize(Config.getYoutubeApiKey(), onInitializedListener);
 
     }
 }
